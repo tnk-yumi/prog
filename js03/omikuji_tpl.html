@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>おみくじ</title>
+</head>
+<body>
+
+<header style="background-image: url(haikei.jpeg);">
+    <h1>おみくじ</h1>
+</header>
+
+<main>
+    <ul>
+        <li id="pull">おみくじを引く</li>
+    </ul>
+    <p id="echo"></p>
+</main>
+
+<footer style="background-image: url(haikei.jpeg);">フッター</footer>
+<script>
+//Clickイベントのブロック
+const pull = document.querySelector("#pull");
+pull.onclick = function(){
+    //乱数をつくる
+    const num = Math.ceil(Math.random() * 5);
+
+    //乱数をIF分岐処理でわける
+    //条件に合っていればalert()で表示
+    if(num==1){
+        alert("大吉");
+        const echo = document.querySelector("#echo");
+        echo.innerHTML = '<img src = "daikiti.png" alt = "大吉" width = "250" height = "250">' ;
+    }
+    if(num==2){
+        alert("中吉");
+        const echo = document.querySelector("#echo");
+        echo.innerHTML = '<img src = "tyukiti.png" alt = "中吉" width = "250" height = "250">';
+    }
+    if(num==3){
+        alert("小吉");
+        const echo = document.querySelector("#echo");
+        echo.innerHTML = '<img src = "syokiti.png" alt = "小吉" width = "250" height = "250">';
+    }
+    if(num==4){
+        alert("吉");
+        const echo = document.querySelector("#echo");
+        echo.innerHTML = '<img src = "kiti.png" alt = "吉" width = "250" height = "250">';
+    }
+    if(num==5){
+        alert("凶");
+        const echo = document.querySelector("#echo");
+        echo.innerHTML = '<img src = "kyo.png" alt = "凶" width = "250" height = "250">';
+    }
+}
+
+
+
+
+
+</script>
+</body>
+</html>
