@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>クイズ</title>
+</head>
+<body>
+
+<header>
+    <h1>クイズ</h1>
+</header>
+
+<main>
+  <p id="quest">ここに問題が出題されます</p>
+  <p>
+    <input type="radio" name="toi" value="1"><span id="toi1">選択肢１</span>
+    <input type="radio" name="toi" value="2"><span id="toi2">選択肢２</span>
+    <input type="radio" name="toi" value="3"><span id="toi3">選択肢３</span>
+  </p>
+  <p>
+    <button id="next">次の問題</button>
+  </p>
+</main>
+
+<footer id="answer">判定</footer>
+<script>
+//ここから記述領域［START］
+
+  //以下に配列を記述してください。
+  //問題文[配列]
+  const qs = [
+    "畳の発祥地はどこ？",
+    "鳩時計で出てくる鳥はどれ？",
+    "次のうち腐らないものはどれ？",
+    "大きくなるほど小さくなるものは何？",
+    "じゃんけん「最初はグー」を言い始めたのは誰？",
+    "イタリアでお金を借りるときに、担保として入れることができるものはどれ？"
+  ];
+    
+  //回答選択肢[多重配列]
+  const toi = [
+    ["日本","中国","インド"],
+    ["ハト","カッコウ","ホトトギス"],
+    ["ハチミツ","コンソメスープ","ネギ"],
+    ["服","眼鏡","靴"],
+    ["所ジョージ","ビートたけし","志村けん"],
+    ["パスタ","チーズ","ワイン"]
+  ];
+    
+  //答え[配列]
+  const ans = [1,2,1,1,3,2];
+
+  //1.最初の問題文＆回答選択肢＆回答値を設定
+  let i = 0;
+  $("#quest").text(qs[i]);
+  $("#toi1").text(toi[i][0]);
+  $("#toi2").text(toi[i][1]);
+  $("#toi3").text(toi[i][2]);
+  $("#toi4").text(toi[i][3]);
+  $("#toi5").text(toi[i][4]);
+  $("#toi6").text(toi[i][5]);  
+
+
+  //2.ラジオボタンをクリックしたらイベント発生！(クリックイベント)
+  $("[name=toi]").on("click",function(){
+    const v = $(this).val();
+    if(ans[i] == v){
+      $("#answer").text("正解！");
+    }else{
+      $("#answer").text("不正解");
+    }
+  });
+
+  $("#next").on("click",function(){
+    i++;
+    if(i > 5){
+      $("h1").html("クイズ終了");
+      $("#quest").html("");
+      $("[name=toi]").hide();
+      $("#toi1").hide();
+      $("#toi2").hide();
+      $("#toi3").hide();
+      $("#toi4").hide();
+      $("#toi5").hide();
+      $("#toi6").hide();
+      $("#next").hide();
+      $("#answer").hide();
+    }else{
+      qcount = i + 1;
+      $("h1").html("クイズ(" + qcount + "問目)");
+      $("#quest").html(qs[i]);
+      $("#toi1").html(toi[i][0]);
+      $("#toi2").html(toi[i][1]);
+      $("#toi3").html(toi[i][2]);
+      $("#toi4").html(toi[i][3]);
+      $("#toi5").html(toi[i][4]);
+      $("#toi6").html(toi[i][5]);
+    }
+  });
+
+
+
+
+//ここまでが記述領域［END］
+</script>
+</body>
+</html>
